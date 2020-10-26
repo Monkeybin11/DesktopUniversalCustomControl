@@ -1,4 +1,5 @@
 ﻿using DesktopUniversalCustomControl.ExposedMethod;
+using Prism.Commands;
 using QRCoder;
 using System;
 using System.Diagnostics;
@@ -19,7 +20,8 @@ namespace DesktopUniversalCustomControl.CustomComponent
     /// </summary>
     public class QRCodeControl : Control
     {
-        public readonly static ICommand RefreshQrCodeCommand = new RoutedCommand("Refresh", typeof(QRCodeControl));
+        public DelegateCommand RefreshQrCodeCommand { get; set; }
+        public readonly static ICommand RefreshCommand = new RoutedCommand("Refresh", typeof(QRCodeControl));
         private static int index;
 
         static QRCodeControl()
@@ -35,12 +37,33 @@ namespace DesktopUniversalCustomControl.CustomComponent
 
         private void InitCommand()
         {
-            //CommandManager.RegisterClassCommandBinding(typeof(QRCodeControl), new CommandBinding(RefreshQrCodeCommand, delegate { RefreshQrCode(this); }));
+            RefreshQrCodeCommand = new DelegateCommand(RefreshQrCode);
 
-            CommandBinding commandBinding = new CommandBinding(RefreshQrCodeCommand);
-            commandBinding.CanExecute += CommandBinding_CanExecute;
-            commandBinding.Executed += delegate { RefreshQrCode(this); };
-            this.CommandBindings.Add(commandBinding);
+            //CommandManager.RegisterClassCommandBinding(typeof(QRCodeControl), new CommandBinding(RefreshCommand, delegate { RefreshQrCode(); }));
+
+            //CommandBinding commandBinding = new CommandBinding(RefreshCommand);
+            //commandBinding.CanExecute += CommandBinding_CanExecute;
+            //commandBinding.Executed += delegate { RefreshQrCode(); };
+            //this.CommandBindings.Add(commandBinding);
+        }
+
+        private void RefreshQrCode()
+        {
+            if (IsRefresh)
+            {
+                if (index <= 5)
+                {
+                    index++;
+                    this.QrCodeContent += " ";
+                }
+                else
+                {
+                    index = 0;
+                    this.QrCodeContent = this.QrCodeContent.Trim();
+                }
+
+                this.QRCodeImage = GetQRCodeImage(this);
+            }
         }
 
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -48,25 +71,6 @@ namespace DesktopUniversalCustomControl.CustomComponent
             e.CanExecute = true;
 
             e.Handled = true;
-        }
-
-        private void RefreshQrCode(QRCodeControl qRCodeControl)
-        {
-            if (IsRefresh)
-            {                
-                if (index <= 5)
-                {
-                    index++;
-                    qRCodeControl.QrCodeContent += " ";
-                }                  
-                else
-                {
-                    index = 0;
-                    qRCodeControl.QrCodeContent = qRCodeControl.QrCodeContent.Trim();
-                }
-
-                qRCodeControl.QRCodeImage = GetQRCodeImage(qRCodeControl);
-            }        
         }
 
         /// <summary>
@@ -111,12 +115,19 @@ namespace DesktopUniversalCustomControl.CustomComponent
             set{ SetValue(IsRefreshProperty, value); }
         }       
         public static readonly DependencyProperty IsRefreshProperty =
-            DependencyProperty.Register("IsRefresh", typeof(bool), typeof(QRCodeControl), new PropertyMetadata(false, new PropertyChangedCallback(RefreshChanged)));
-      
-        private static void RefreshChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {           
-            var qrcode = d as QRCodeControl;
+            DependencyProperty.Register("IsRefresh", typeof(bool), typeof(QRCodeControl), new PropertyMetadata(false));
+
+
+        /// <summary>
+        /// 是否显示刷新按钮        
+        /// </summary>
+        public bool IsShowRefreshIcon
+        {
+            get { return (bool)GetValue(IsShowRefreshIconProperty); }
+            set { SetValue(IsShowRefreshIconProperty, value); }
         }
+        public static readonly DependencyProperty IsShowRefreshIconProperty =
+            DependencyProperty.Register("IsShowRefreshIcon", typeof(bool), typeof(QRCodeControl), new PropertyMetadata(false));
 
 
         /// <summary>

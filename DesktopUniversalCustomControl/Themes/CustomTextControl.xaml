@@ -9,17 +9,18 @@
         <Setter Property="CornerRadius" Value="5"></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="DarkGray"/>
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource AssistantForegroundColor}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextPlaceHolder" Value="{x:Null}"/>
         <Setter Property="ToolTip" Value="{x:Null}"/>
+        <Setter Property="Cursor" Value="IBeam" />
         <Setter Property="InputMethod.IsInputMethodEnabled" Value="False"/>
         <Setter Property="Padding" Value="8,0,0,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type customCtl:CustomTextControl}">
-                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" ToolTip="{TemplateBinding ToolTip}"
+                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" ToolTip="{TemplateBinding ToolTip}" 
                             BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
                             <TextBlock x:Name="PART_PlaceHolder" Text="{TemplateBinding TextPlaceHolder}" Foreground="LightGray" Opacity="0"
@@ -45,10 +46,6 @@
                         </Trigger>
                         <Trigger Property="TextInputType" Value="chinese">
                             <Setter Property="InputMethod.IsInputMethodEnabled" Value="True"></Setter>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="CaretBrush" Value="#4A4A4A"/>
-                            <Setter Property="Cursor" Value="IBeam"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

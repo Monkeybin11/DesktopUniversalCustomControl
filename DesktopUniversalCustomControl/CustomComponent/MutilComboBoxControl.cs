@@ -11,6 +11,7 @@ namespace DesktopUniversalCustomControl.CustomComponent
     /// 多选下拉框
     /// MutilComboBoxControl
     /// </summary>
+    [TemplatePart(Name = "dropDownListView", Type = typeof(ListView))]
     public class MutilComboBoxControl : CustomComboBox
     {
         static MutilComboBoxControl()
@@ -32,14 +33,19 @@ namespace DesktopUniversalCustomControl.CustomComponent
         }
 
 
-
         /// <summary>
         /// 子项的Lable内容
         /// </summary>
         public object SelectedItemContent
         {
-            get { return (object)GetValue(SelectedItemContentProperty); }
-            set { SetValue(SelectedItemContentProperty, value); }
+            get
+            {
+                return (object)GetValue(SelectedItemContentProperty);
+            }
+            set
+            {
+                SetValue(SelectedItemContentProperty, value);
+            }
         }
 
         public static readonly DependencyProperty SelectedItemContentProperty =
@@ -51,8 +57,14 @@ namespace DesktopUniversalCustomControl.CustomComponent
         /// </summary>
         public ItemType ItemType
         {
-            get { return (ItemType)GetValue(ItemTypeProperty); }
-            set { SetValue(ItemTypeProperty, value); }
+            get
+            {
+                return (ItemType)GetValue(ItemTypeProperty);
+            }
+            set
+            {
+                SetValue(ItemTypeProperty, value);
+            }
         }
 
         public static readonly DependencyProperty ItemTypeProperty =
@@ -105,8 +117,14 @@ namespace DesktopUniversalCustomControl.CustomComponent
         /// </summary>
         public string ItemButtonContent
         {
-            get { return (string)GetValue(ItemButtonContentProperty); }
-            set { SetValue(ItemButtonContentProperty, value); }
+            get
+            {
+                return (string)GetValue(ItemButtonContentProperty);
+            }
+            set
+            {
+                SetValue(ItemButtonContentProperty, value);
+            }
         }
 
         public static readonly DependencyProperty ItemButtonContentProperty =
@@ -189,8 +207,14 @@ namespace DesktopUniversalCustomControl.CustomComponent
         /// </summary>
         public ImageSource ItemImageSource
         {
-            get { return (ImageSource)GetValue(ItemImageSourceProperty); }
-            set { SetValue(ItemImageSourceProperty, value); }
+            get
+            {
+                return (ImageSource)GetValue(ItemImageSourceProperty);
+            }
+            set
+            {
+                SetValue(ItemImageSourceProperty, value);
+            }
         }
 
         public static readonly DependencyProperty ItemImageSourceProperty =
@@ -218,8 +242,14 @@ namespace DesktopUniversalCustomControl.CustomComponent
         /// </summary>
         public bool AddDeleteFun
         {
-            get { return (bool)GetValue(AddDeleteFunProperty); }
-            set { SetValue(AddDeleteFunProperty, value); }
+            get
+            {
+                return (bool)GetValue(AddDeleteFunProperty);
+            }
+            set
+            {
+                SetValue(AddDeleteFunProperty, value);
+            }
         }
 
         public static readonly DependencyProperty AddDeleteFunProperty =
@@ -231,8 +261,14 @@ namespace DesktopUniversalCustomControl.CustomComponent
         /// </summary>
         public Brush StrokeLineColor
         {
-            get { return (Brush)GetValue(StrokeLineColorProperty); }
-            set { SetValue(StrokeLineColorProperty, value); }
+            get
+            {
+                return (Brush)GetValue(StrokeLineColorProperty);
+            }
+            set
+            {
+                SetValue(StrokeLineColorProperty, value);
+            }
         }
 
         public static readonly DependencyProperty StrokeLineColorProperty =
@@ -256,11 +292,13 @@ namespace DesktopUniversalCustomControl.CustomComponent
 
         private static void DeleteContentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var mutil = d as MutilComboBoxControl;            
+            var mutil = d as MutilComboBoxControl;
             mutil.Text = null;
             contentList.Clear();
-            var lb = mutil.Template.FindName("dropDownListBox", mutil) as ListBox;
-            lb.UnselectAll();
+            (mutil.GetTemplateChild("dropDownListView") as  ListView).UnselectAll();
+
+            //var lb = mutil.Template.FindName("dropDownListView", mutil) as ListView;
+            //lb.UnselectAll();
         }
 
 

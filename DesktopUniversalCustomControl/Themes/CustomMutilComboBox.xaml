@@ -3,8 +3,7 @@
                     xmlns:customCtl="clr-namespace:DesktopUniversalCustomControl.CustomComponent">
 
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-    
-    
+
     <!--TooggleButton 删除按钮-->
     <Style x:Key="delToggleButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="Template">
@@ -318,7 +317,7 @@
                                     <Border x:Name="dropDownBorder" CornerRadius="5" Margin="-2,-1,0,0"
                                             MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderThickness="0"
                                             MinWidth="{Binding ElementName=grid,Path=Width}">
-                                        <ListView SelectionMode="Multiple" ItemsSource="{TemplateBinding ItemsSource}" BorderThickness="0"
+                                        <ListView x:Name="dropDownListView" SelectionMode="Multiple" ItemsSource="{TemplateBinding ItemsSource}" BorderThickness="0"
                                                   ItemContainerStyle="{StaticResource ItemContainer}"
                                                   ItemTemplate="{TemplateBinding ItemTemplate}"
                                                   MaxHeight="{TemplateBinding MaxDropDownHeight}" 

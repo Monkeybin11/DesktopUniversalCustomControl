@@ -22,20 +22,5 @@ namespace DesktopUniversalCustomControl.NotifycationObject
                 OnPropertyChanged(propertyName);
             }
         }
-
-        #region PublicData
-
-
-        private Point _clickPoint;
-        /// <summary>
-        /// 鼠标点击坐标
-        /// </summary>
-        public Point ClickPoint
-        {
-            get { return _clickPoint; }
-            set => SetProperty(ref _clickPoint, value);
-        }
-
-        #endregion     
     }
 }

@@ -1,0 +1,103 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:customCtl="clr-namespace:DesktopUniversalCustomControl.CustomComponent">
+
+    <Style x:Key="ChartControlView" TargetType="{x:Type customCtl:ChartControlView}">
+        <Setter Property="StrokeCoordinate" Value="Red"/>
+        <Setter Property="StrokeThicknessCoordinate" Value="2"/>
+        <Setter Property="XAxisDescription" Value="月份(年)"/>
+        <Setter Property="YAxisDescription" Value="产量(kg)"/>
+        <Setter Property="XAxisMargin" Value="0"/>
+        <Setter Property="YAxisMargin" Value="-60,-5,0,0"/>
+        <Setter Property="XTicksMargin" Value="-25,0,0,0"/>
+        <Setter Property="YTicksMargin" Value="-40,-8,0,0"/>
+        <Setter Property="ChartType" Value="PolyLine"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type customCtl:ChartControlView}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="roateStoryboard">
+                            <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetName="Fangraph"
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"></EasingDoubleKeyFrame>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="360"></EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid x:Name="TemplateRoot">
+                            <Canvas x:Name="coordinateSystem">
+                                <customCtl:CoordinateSystem x:Name="coordinate" CenterPoint="{TemplateBinding CenterPoint}" XEndPoint="{TemplateBinding XEndPoint}" YEndPoint="{TemplateBinding YEndPoint}"
+                                                    XCoordinateTicks="{TemplateBinding XCoordinateTicks}" YCoordinateTicks="{TemplateBinding YCoordinateTicks}"
+                                                    Stroke="{TemplateBinding StrokeCoordinate}" StrokeThickness="{TemplateBinding StrokeThicknessCoordinate}"/>
+                                <TextBlock Text="{TemplateBinding XAxisDescription}" FontSize="14" FontWeight="Bold" Foreground="White" Margin="{TemplateBinding XAxisMargin}"
+                                           Canvas.Left="{Binding ElementName=coordinate,Path=XEndPoint.X}"
+                                           Canvas.Top="{Binding ElementName=coordinate,Path=XEndPoint.Y}"/>
+                                <TextBlock Text="{TemplateBinding YAxisDescription}" FontSize="14" FontWeight="Bold" Foreground="White" Margin="{TemplateBinding YAxisMargin}"
+                                           Canvas.Left="{Binding ElementName=coordinate,Path=YEndPoint.X}"
+                                           Canvas.Top="{Binding ElementName=coordinate,Path=YEndPoint.Y}"/>
+                            </Canvas>
+                            <!--X轴刻度描述-->
+                            <Canvas x:Name="xTicks">
+                                <!--<TextBlock Canvas.Left="{Binding ElementName=coordinate,Path=XTicks[0].X}" Canvas.Top="{Binding ElementName=coordinate,Path=XTicks[0].Y}" 
+                                           Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=XTickDescription[0]}" Style="{StaticResource textBlock}"
+                                           Margin="{TemplateBinding XTicksMargin}"/>-->
+                            </Canvas>
+                            <!--Y轴刻度描述-->
+                            <Canvas x:Name="yTicks">
+                                <!--<TextBlock Canvas.Left="{Binding ElementName=coordinate,Path=YTicks[0].Y}" Canvas.Top="{Binding ElementName=coordinate,Path=YTicks[0].Y}" 
+                                           Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=YTickDescription[0]}" Style="{StaticResource textBlock}"
+                                           Margin="{TemplateBinding YTicksMargin}"/>-->
+                            </Canvas>
+                            <!--画图-->
+                            <Canvas x:Name="drawChart">
+                                <Polyline x:Name="PolyLine" Points="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ChartNewDataCollection}" 
+                                          Stroke="{TemplateBinding StrokeCoordinate}" StrokeThickness="{TemplateBinding StrokeThicknessCoordinate}"
+                                          Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ChartType,
+                                                        Converter={StaticResource ChartTypeToVisibility},ConverterParameter=PolyLineMap}"/>
+
+                                <Path x:Name="Histogram" Fill="{TemplateBinding StrokeCoordinate}" 
+                                      Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ChartType,
+                                                  Converter={StaticResource ChartTypeToVisibility},ConverterParameter=HistogramMap}"/>
+                                <Canvas x:Name="otherHistogram" Visibility="{Binding ElementName=Histogram,Path=Visibility}"/>
+
+                                <Canvas x:Name="Fangraph" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ChartType,
+                                                                       Converter={StaticResource ChartTypeToVisibility},ConverterParameter=FangraphMap}">
+                                    <Canvas.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <RotateTransform CenterX="300" CenterY="300"/>
+                                            <SkewTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Canvas.RenderTransform>
+                                </Canvas>
+                                <!--<Canvas x:Name="otherFangraph" Visibility="{Binding ElementName=Fangraph,Path=Visibility}"/>-->
+                            </Canvas>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard x:Name="startRoateStoryboard" Storyboard="{StaticResource roateStoryboard}"/>
+                        </EventTrigger>
+                        <Trigger Property="IsMouseOver" Value="True" SourceName="Fangraph">
+                            <Trigger.EnterActions>
+                                <PauseStoryboard BeginStoryboardName="startRoateStoryboard"></PauseStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False" SourceName="Fangraph">
+                            <Trigger.EnterActions>
+                                <ResumeStoryboard BeginStoryboardName="startRoateStoryboard"></ResumeStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Type customCtl:ChartControlView}" TargetType="{x:Type customCtl:ChartControlView}" BasedOn="{StaticResource ChartControlView}">
+
+    </Style>
+
+</ResourceDictionary>

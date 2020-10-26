@@ -1,8 +1,10 @@
 ﻿using DesktopUniversalCustomControl.CustomView.MsgDlg;
+using DesktopUniversalCustomControl.Extensions.BaseCategory;
 using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace DesktopUniversalCustomControl.ValueConverters
 {
@@ -15,6 +17,36 @@ namespace DesktopUniversalCustomControl.ValueConverters
                 return Visibility.Visible;
             else
                 return Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [MarkupExtensionReturnType(typeof(Visibility))]
+    public class BooleanTrueToVisibilityConverter : MarkupExtensionBase, IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var boolBox = (bool)value;
+            return boolBox == true ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [MarkupExtensionReturnType(typeof(Visibility))]
+    public class BooleanFalseToVisibilityConverter : MarkupExtensionBase, IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var boolBox = (bool)value;
+            return boolBox == false ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

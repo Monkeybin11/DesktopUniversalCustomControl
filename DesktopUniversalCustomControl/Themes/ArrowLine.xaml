@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:customCtl="clr-namespace:DesktopUniversalCustomControl.CustomComponent">
+
+    <Style x:Key="ArrowLine" TargetType="{x:Type customCtl:ArrowLine}">
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <RotateTransform Angle="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=customCtl:ArrowLine},Path=(customCtl:ArrowLine.RotateAngle)}" 
+                                 CenterX="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=customCtl:ArrowLine},Path=X1}" 
+                                 CenterY="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=customCtl:ArrowLine},Path=Y1}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Type customCtl:ArrowLine}" TargetType="{x:Type customCtl:ArrowLine}" BasedOn="{StaticResource ArrowLine}">
+
+    </Style>
+    
+</ResourceDictionary>

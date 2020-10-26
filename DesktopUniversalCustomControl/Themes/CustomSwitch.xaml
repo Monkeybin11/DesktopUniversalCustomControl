@@ -14,8 +14,8 @@
 
     <Style x:Key="ChanceSwitchControl" TargetType="{x:Type customCtl:SwitchControl}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Foreground" Value="{StaticResource {x:Static SystemColors.WindowBrushKey}}"/>
-        <Setter Property="Background" Value="BlueViolet"/>
+        <Setter Property="Foreground" Value="{DynamicResource AssistantForegroundColor}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>

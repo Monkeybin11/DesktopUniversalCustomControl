@@ -12,13 +12,25 @@
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomComboBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/QRCodeControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomMutilComboBox.xaml" />
-        
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomIconControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomSlider.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/ArrowLine.xaml" />
+
         <!--View-->
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomToolTip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CarouselControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/MessageDialogView.xaml" />
-            
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/ChartControlView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/MediaPlayerView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/InputMethodView.xaml" />
+        
         <!--Other-->
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomEffectShadow.xaml" />
+
+        <!--Dictionary-->
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Resource/Dictionary/ConverterDictionary.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

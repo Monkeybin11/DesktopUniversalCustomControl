@@ -29,6 +29,18 @@ namespace DesktopUniversalCustomControl.CustomComponent
 
 
         /// <summary>
+        /// 是否显示百分比
+        /// </summary>
+        public bool IsShowPercent
+        {
+            get {  return (bool)GetValue(IsShowPercentProperty);   }
+            set {  SetValue(IsShowPercentProperty, value);  }
+        }
+        public static readonly DependencyProperty IsShowPercentProperty =
+            DependencyProperty.Register("IsShowPercent", typeof(bool), typeof(CustomProgressBar), new PropertyMetadata());
+
+
+        /// <summary>
         /// CornerRadius
         /// </summary>
         public CornerRadius CornerRadius

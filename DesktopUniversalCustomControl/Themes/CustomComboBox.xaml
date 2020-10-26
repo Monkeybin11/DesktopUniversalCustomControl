@@ -61,7 +61,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type customCtl:CustomComboBox}">
+    <Style x:Key="ChanceCustomComboBox" TargetType="{x:Type customCtl:CustomComboBox}">
         <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource AssistantForegroundColor}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -169,6 +169,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="{x:Type customCtl:CustomComboBox}" TargetType="{x:Type customCtl:CustomComboBox}" BasedOn="{StaticResource ChanceCustomComboBox}">
+
     </Style>
 
 </ResourceDictionary>

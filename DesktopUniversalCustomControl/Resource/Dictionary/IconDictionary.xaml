@@ -3,7 +3,7 @@
                     xmlns:component="clr-namespace:DesktopUniversalCustomControl.CustomComponent"
                     xmlns:converter="clr-namespace:DesktopUniversalCustomControl.Service.Common">
 
-    <converter:CanvasNameToVisibility x:Key="CanvasNameToVisibility"></converter:CanvasNameToVisibility>
+    <converter:CanvasNameToVisibility x:Key="CanvasNameToVisibility"/>
     <SolidColorBrush x:Key="foreground" Color="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=component:CustomIconControl},Path= Foreground}"/>
     <SolidColorBrush x:Key="background" Color="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=component:CustomIconControl},Path= Background}"/>
 

@@ -135,6 +135,5 @@ namespace DesktopUniversalCustomControl.CustomComponent
             get { return (Visibility)GetValue(LanguageExangeButtonProperty); }
             set { SetValue(LanguageExangeButtonProperty, value); }
         }
-
     }
 }
