@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 
-namespace DesktopUniversalCustomControl.Service.Common
+namespace DesktopUniversalCustomControl.ValueConverters
 {
     public class StringToListTypeConver : TypeConverter
     {

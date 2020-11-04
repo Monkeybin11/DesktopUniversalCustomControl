@@ -71,19 +71,20 @@
         <Setter Property="ComboxBoxItemMouseOverBackground" Value="{DynamicResource AssistantBackgroundColor}"/>
         <Setter Property="ToggleButtonBackground" Value="Red"/>
         <Setter Property="ToggleButtonSize" Value="0.8" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
 
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style TargetType="{x:Type customCtl:CustomComboBoxItem}">
+                <Style TargetType="{x:Type ComboBoxItem}">
                     <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=customCtl:CustomComboBox},Path=Foreground}"/>
                     <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=customCtl:CustomComboBox},Path=Height}"></Setter>
                     <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=customCtl:CustomComboBox},Path=Width}"></Setter>
                     <Setter Property="Template">
                         <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type customCtl:CustomComboBoxItem}">
+                            <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                                 <Border x:Name="border" Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=customCtl:CustomComboBox},Path=ComboBoxListBackground}">
                                     <Label Content="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}" Height="{TemplateBinding Height}" Foreground="{TemplateBinding Foreground}" 
-                                           VerticalContentAlignment="Center" BorderThickness="0,1,0,0" BorderBrush="WhiteSmoke" 
+                                           VerticalContentAlignment="Center" BorderThickness="0,1,0,0" BorderBrush="WhiteSmoke"
                                            Padding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=customCtl:CustomComboBox},Path=Padding}"/>
                                 </Border>
                                 <ControlTemplate.Triggers>
@@ -119,6 +120,8 @@
                                 <ColumnDefinition Width="7*"/>
                                 <ColumnDefinition Width="3*" MaxWidth="50"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="PART_PlaceHolder" Text="{TemplateBinding TextPlaceHolder}" Foreground="LightGray" Opacity="0"
+                                       TextAlignment="Left" FontSize="{TemplateBinding FontSize}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}"/>
                             <ContentPresenter x:Name="content" Content="{TemplateBinding SelectionBoxItem}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}"
                                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" IsHitTestVisible="False"/>
                             <ToggleButton x:Name="toggle" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource toggleButton}" Focusable="False" ClickMode="Press"
@@ -133,13 +136,13 @@
                                             <ScaleTransform ScaleX="1" ScaleY="1"></ScaleTransform>
                                         </TransformGroup>
                                     </Grid.RenderTransform>
-                                    <Rectangle Width="{Binding TemplatedParent}" Height="{Binding TemplatedParent}" 
-                                               Fill="{StaticResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
-                                    <Border x:Name="dropDownBorder" CornerRadius="5" 
+                                    <Rectangle Width="{Binding TemplatedParent}" Height="{Binding TemplatedParent}" Fill="White"/>
+                                    <Border x:Name="dropDownBorder" CornerRadius="0"
                                             MaxHeight="{TemplateBinding MaxDropDownHeight}" 
                                             MinWidth="{Binding ElementName=grid,Path=ActualWidth}">
                                         <ScrollViewer x:Name="dropDownScrollViewer" CanContentScroll="True" SnapsToDevicePixels="True" 
-                                                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                                  VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" 
+                                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
                                             <!--<ItemsPresenter x:Name="itemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
                                         </ScrollViewer>
@@ -149,6 +152,9 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Opacity" Value="0.6" TargetName="PART_PlaceHolder"></Setter>
+                        </Trigger>
                         <Trigger Property="IsChecked" Value="true" SourceName="toggle">
                             <Setter Property="CornerRadius" Value="5,5,0,0" TargetName="PART_Border"></Setter>
                             <Trigger.EnterActions>

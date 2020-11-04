@@ -7,22 +7,6 @@ using System.Windows.Data;
 namespace DesktopUniversalCustomControl.Service.Common
 {
     /// <summary>
-    /// MediaPlayerState转Visibility
-    /// </summary>
-    public class MediaPlayerStateToVisibility : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return (MediaPlayerState)value == MediaPlayerState.Pause ? Visibility.Collapsed : Visibility.Visible;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    /// <summary>
     /// Double转Int
     /// </summary>
     public class DoubleToInt : IValueConverter
@@ -82,27 +66,6 @@ namespace DesktopUniversalCustomControl.Service.Common
             var kind = (IconType)value;
             string canvasName = parameter.ToString();
             if (canvasName.Contains(kind.ToString()))
-                return Visibility.Visible;
-            else
-                return Visibility.Collapsed;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    /// <summary>
-    /// ChartControlView
-    /// 根据ChartType绘制图形
-    /// </summary>
-    public class ChartTypeToVisibility : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            ChartType type = (ChartType)value;
-            if (parameter.ToString().Contains(type.ToString()))
                 return Visibility.Visible;
             else
                 return Visibility.Collapsed;

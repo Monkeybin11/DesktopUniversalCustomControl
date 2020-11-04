@@ -39,6 +39,26 @@ namespace DesktopUniversalCustomControl.CustomComponent
                 cus.IsDropDownOpen = true;
         }
 
+
+        public string TextPlaceHolder
+        {
+            get
+            {
+                return (string)GetValue(TextPlaceHolderProperty);
+            }
+            set
+            {
+                SetValue(TextPlaceHolderProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// 提示语
+        /// </summary>
+        public static readonly DependencyProperty TextPlaceHolderProperty =
+            DependencyProperty.Register("TextPlaceHolder", typeof(string), typeof(CustomComboBox), new PropertyMetadata(default(string)));
+
+
         /// <summary>
         /// CornerRadius
         /// </summary>
@@ -124,7 +144,7 @@ namespace DesktopUniversalCustomControl.CustomComponent
             {
                 SetValue(ToggleButtonSizeProperty, value);
             }
-        }      
+        }
         public static readonly DependencyProperty ToggleButtonSizeProperty =
             DependencyProperty.Register("ToggleButtonSize", typeof(double), typeof(CustomComboBox), new PropertyMetadata(default(double)));
     }

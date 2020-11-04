@@ -9,64 +9,8 @@
     xmlns:exposed="clr-namespace:DesktopUniversalCustomControl.ExposedMethod"
     xmlns:converter="clr-namespace:DesktopUniversalCustomControl.Service.Common">
 
-    <!--<ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/DesktopUniversalCustomControl;component/Resource/Dictionary/IconDictionary.xaml"/>
-    </ResourceDictionary.MergedDictionaries>-->
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-    <converter:ChartTypeToVisibility x:Key="ChartTypeToVisibility"/>
-    <converter:MediaPlayerStateToVisibility x:Key="MediaPlayerStateToVisibility"/>
+
     <converter:DoubleToInt x:Key="DoubleToInt"/>
-
-    <!--<SolidColorBrush x:Key="foregroundColor" Color="BlueViolet"/>
-    <LinearGradientBrush x:Key="backgroundColor">
-        <GradientStop Offset="0.3" Color="LightSalmon"></GradientStop>
-        <GradientStop Offset="0.6" Color="Orange"></GradientStop>
-        <GradientStop Offset="0.9" Color="OrangeRed"></GradientStop>
-    </LinearGradientBrush>-->
-    <DropShadowEffect x:Key="effect" BlurRadius="10" ShadowDepth="1" Direction="90" Color="Gray"/>
-    <OuterGlowBitmapEffect x:Key="bitmapEffect" GlowColor="DarkBlue" GlowSize="10" Opacity="0.7"/>
-
-    <!--ToolTip-->
-    <!--<Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
-        <Setter Property="MinWidth" Value="50"></Setter>
-        <Setter Property="MinHeight" Value="30"></Setter>
-        <Setter Property="FontSize" Value="16"></Setter>
-        <Setter Property="Foreground" Value="White"></Setter>
-        <Setter Property="Background" Value="{StaticResource backgroundColor}"></Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ToolTip}">
-                    <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0"
-                            CornerRadius="5" Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-
-    <!--TextBlock-->
-    <Style x:Key="textBlock" TargetType="{x:Type TextBlock}">
-        <Setter Property="Width" Value="50"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="SaddleBrown"/>
-        <Setter Property="FontFamily" Value="微软雅黑"/>
-        <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="-25,0,0,0"/>
-    </Style>
-
-    <!--MediaPlayerView-->
-
-
-    <!--ChartControlView-->
-
-
-    <!--轮播控件-->
-
-
-
 
     <!--CustomComboBoxItem-->
     <Style TargetType="{x:Type local:CustomComboBoxItem}">
@@ -99,14 +43,7 @@
         </Setter>
     </Style>
 
-
-
-    <Style TargetType="{x:Type local:CustomPopupEx}">
-        <Setter Property="Effect" Value="{StaticResource effect}"/>
-    </Style>
     
-    <!--ArrowLine-->
-
     
     <!--CoordinateSystem-->
     <Style TargetType="{x:Type local:CoordinateSystem}">

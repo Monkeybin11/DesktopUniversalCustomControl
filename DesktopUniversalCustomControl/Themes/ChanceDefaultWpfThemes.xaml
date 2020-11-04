@@ -16,6 +16,8 @@
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomIconControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomSlider.xaml" />
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/ArrowLine.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomScrollBar.xaml" />
 
         <!--View-->
         <ResourceDictionary Source="pack://application:,,,/DesktopUniversalCustomControl;component/Themes/CustomToolTip.xaml" />

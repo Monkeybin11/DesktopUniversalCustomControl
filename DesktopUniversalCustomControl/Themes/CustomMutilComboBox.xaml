@@ -267,6 +267,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Padding" Value="8,0,0,0"/>
         <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="ComboBoxListBackground" Value="{DynamicResource PrimaryBackgroundColor}"/>
         <Setter Property="ComboxBoxItemMouseOverBackground" Value="{DynamicResource AssistantBackgroundColor}"/>
         <Setter Property="StrokeLineColor" Value="White" />
@@ -296,6 +297,8 @@
                                 <ColumnDefinition Width="1*" MaxWidth="50"/>
                                 <ColumnDefinition Width="2*" MaxWidth="50"/>
                             </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="PART_PlaceHolder" Text="{TemplateBinding TextPlaceHolder}" Foreground="LightGray" Opacity="0"
+                                       TextAlignment="Left" FontSize="{TemplateBinding FontSize}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}"/>
                             <ToggleButton x:Name="delToggleButton" Grid.Column="1" Style="{StaticResource delToggleButton}"
                                           IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(customCtl:MutilComboBoxControl.IsDeletedContent),Mode=TwoWay}"
                                           Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=AddDeleteFun,Converter={StaticResource BooleanToVisibilityConverter}}"/>
@@ -329,6 +332,9 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Opacity" Value="0.6" TargetName="PART_PlaceHolder"></Setter>
+                        </Trigger>
                         <Trigger Property="IsEditable" Value="True">
                             <Setter Property="CaretBrush" Value="white" TargetName="PART_EditableTextBox"/>
                             <Setter Property="IsHitTestVisible" Value="True" TargetName="PART_EditableTextBox"/>

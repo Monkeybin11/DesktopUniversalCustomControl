@@ -20,7 +20,7 @@ namespace DesktopUniversalCustomControl.CustomComponent
     /// </summary>
     public class QRCodeControl : Control
     {
-        public DelegateCommand RefreshQrCodeCommand { get; set; }
+        public DelegateCommand RefreshQrCodeCommand { get; private set; }
         public readonly static ICommand RefreshCommand = new RoutedCommand("Refresh", typeof(QRCodeControl));
         private static int index;
 

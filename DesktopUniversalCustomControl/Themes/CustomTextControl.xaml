@@ -8,6 +8,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="5"></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{DynamicResource AssistantForegroundColor}"/>
         <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
@@ -25,8 +26,10 @@
                         <Grid>
                             <TextBlock x:Name="PART_PlaceHolder" Text="{TemplateBinding TextPlaceHolder}" Foreground="LightGray" Opacity="0"
                                        TextAlignment="Left" FontSize="{TemplateBinding FontSize}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}"/>
-                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      IsHitTestVisible="{TemplateBinding IsHitTestVisible}" Foreground="{TemplateBinding Foreground}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                          IsHitTestVisible="{TemplateBinding IsHitTestVisible}" Foreground="{TemplateBinding Foreground}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
