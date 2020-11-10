@@ -16,11 +16,17 @@ namespace DesktopUniversalCustomControl.CustomComponent
     /// <summary>
     /// CustomCheckBox
     /// </summary>
+    [TemplatePart(Name = "PART_Border", Type = typeof(Border))]
     public class CustomCheckBox : CheckBox
     {
         static CustomCheckBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomCheckBox), new FrameworkPropertyMetadata(typeof(CustomCheckBox)));
+        }
+
+        public CustomCheckBox()
+        {
+            var border = this.GetTemplateChild("PART_Border") as Border;
         }
 
         public Brush IsMouseOverBackground

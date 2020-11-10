@@ -17,9 +17,9 @@
                             <RowDefinition  />
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Border>
+                        <Border VerticalAlignment="{TemplateBinding VerticalAlignment}">
                             <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Margin="{TemplateBinding Padding}"
-                                                    VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ScrollBar x:Name="PART_VerticalScrollBar"
                                    Grid.Row="0" Grid.Column="1"

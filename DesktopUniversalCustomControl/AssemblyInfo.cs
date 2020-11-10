@@ -13,6 +13,9 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix("http://chance-wpf/2020/xaml", "chance")]
 
 [assembly: XmlnsDefinition("http://chance-wpf/2020/xaml", "DesktopUniversalCustomControl")]
-[assembly: XmlnsDefinition("http://chance-wpf/2020/xaml", "DesktopUniversalCustomControl.ValueConverters")]
 [assembly: XmlnsDefinition("http://chance-wpf/2020/xaml", "DesktopUniversalCustomControl.CustomComponent")]
 [assembly: XmlnsDefinition("http://chance-wpf/2020/xaml", "DesktopUniversalCustomControl.CustomView.MsgDlg")]
+[assembly: XmlnsDefinition("http://chance-wpf/2020/xaml", "DesktopUniversalCustomControl.ValueConverters")]
+[assembly: XmlnsDefinition("http://chance-wpf/2020/xaml", "DesktopUniversalCustomControl.Extensions")]
+[assembly: XmlnsDefinition("http://chance-wpf/2020/xaml", "DesktopUniversalCustomControl.Communal")]
+[assembly: XmlnsDefinition("http://chance-wpf/2020/xaml", "DesktopUniversalCustomControl.Communal.AttachedProperty")]

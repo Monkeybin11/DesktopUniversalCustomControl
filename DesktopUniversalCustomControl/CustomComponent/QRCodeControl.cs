@@ -85,7 +85,7 @@ namespace DesktopUniversalCustomControl.CustomComponent
             System.Drawing.ColorConverter colorConverter = new System.Drawing.ColorConverter();
             using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
             {
-                using (QRCodeData qRCodeData = qrGenerator.CreateQrCode(qrCodeControl.QrCodeContent, QRCodeGenerator.ECCLevel.L))
+                using (QRCodeData qRCodeData = qrGenerator.CreateQrCode(qrCodeControl.QrCodeContent ?? string.Empty, QRCodeGenerator.ECCLevel.Q))
                 {
                     using (QRCode qrCode = new QRCode(qRCodeData))
                     {

@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
     <UseWPF>true</UseWPF>
-    <Version>1.0.3.7</Version>
+    <Version>1.0.3.8</Version>
     <Authors>Chance__写代码的厨子</Authors>
     <Description>DesktopUniversalCustomControl的主题库</Description>
     <NeutralLanguage>zh-CN</NeutralLanguage>
     <PackageIcon>C.png</PackageIcon>
-    <AssemblyVersion>1.0.3.7</AssemblyVersion>
-    <FileVersion>1.0.3.7</FileVersion>
+    <AssemblyVersion>1.0.3.8</AssemblyVersion>
+    <FileVersion>1.0.3.8</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:customCtl="clr-namespace:DesktopUniversalCustomControl.CustomComponent">
+                    xmlns:customCtl="clr-namespace:DesktopUniversalCustomControl.CustomComponent"
+                    xmlns:attachted="clr-namespace:DesktopUniversalCustomControl.Communal.AttachedProperty">
 
     <Style x:Key="ChanceTextControl" TargetType="{x:Type customCtl:CustomTextControl}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -24,17 +25,16 @@
                     <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" ToolTip="{TemplateBinding ToolTip}" 
                             BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
-                            <TextBlock x:Name="PART_PlaceHolder" Text="{TemplateBinding TextPlaceHolder}" Foreground="LightGray" Opacity="0"
+                            <TextBlock x:Name="PART_PlaceHolder" Text="{TemplateBinding TextPlaceHolder}" Foreground="{TemplateBinding attachted:PlaceHolderAdditional.PlaceHolderForeground}" Opacity="0"
                                        TextAlignment="Left" FontSize="{TemplateBinding FontSize}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}"/>
                             <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                           IsHitTestVisible="{TemplateBinding IsHitTestVisible}" Foreground="{TemplateBinding Foreground}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Text" Value="">
-                            <Setter Property="Opacity" Value="0.6" TargetName="PART_PlaceHolder"></Setter>
+                            <Setter Property="Opacity" Value="0.8" TargetName="PART_PlaceHolder"></Setter>
                         </Trigger>
                         <Trigger Property="customCtl:CustomTextControl.IsMatchRule" Value="false">
                             <Setter Property="BorderBrush" Value="Red" TargetName="border"></Setter>

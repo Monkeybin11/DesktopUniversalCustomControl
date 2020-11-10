@@ -11,11 +11,11 @@
     <PackageProjectUrl>https://gitee.com/ChanceZXY/DesktopCustomControl</PackageProjectUrl>
     <RepositoryUrl>https://github.com/chancezheng/DesktopCustomControl</RepositoryUrl>
     <NeutralLanguage>zh-CN</NeutralLanguage>
-    <AssemblyVersion>1.0.3.8</AssemblyVersion>
-    <FileVersion>1.0.3.8</FileVersion>
+    <AssemblyVersion>1.0.3.82</AssemblyVersion>
+    <FileVersion>1.0.3.82</FileVersion>
     <PackageReleaseNotes>V1.0.2是基于.NetFramework4.6.1，该版本是兼容Framework4.6.1和.Net Core3.1的</PackageReleaseNotes>
     <PackageTags>WPF/Winfrom/XAML</PackageTags>
-    <Version>1.0.3.8</Version>
+    <Version>1.0.3.82</Version>
     <Copyright>Copyright © 2020 Chance 个人所有</Copyright>
     <PackageIcon>C.png</PackageIcon>
   </PropertyGroup>

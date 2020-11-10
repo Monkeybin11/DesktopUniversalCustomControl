@@ -141,8 +141,7 @@
                                             MaxHeight="{TemplateBinding MaxDropDownHeight}" 
                                             MinWidth="{Binding ElementName=grid,Path=ActualWidth}">
                                         <ScrollViewer x:Name="dropDownScrollViewer" CanContentScroll="True" SnapsToDevicePixels="True" 
-                                                  VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" 
-                                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
                                             <!--<ItemsPresenter x:Name="itemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
                                         </ScrollViewer>
