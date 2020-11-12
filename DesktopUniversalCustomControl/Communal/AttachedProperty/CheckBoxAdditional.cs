@@ -33,11 +33,7 @@ namespace DesktopUniversalCustomControl.Communal.AttachedProperty
         private static void CheckBoxSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var customCheckBox = d as CustomCheckBox;
-
             customCheckBox.Loaded += delegate { ScaledTransformResult(customCheckBox, e); };
-
-            if(customCheckBox.IsLoaded)
-                ScaledTransformResult(customCheckBox, e);
         }
 
         private static void ScaledTransformResult(CustomCheckBox customCheckBox, DependencyPropertyChangedEventArgs e)
@@ -47,6 +43,7 @@ namespace DesktopUniversalCustomControl.Communal.AttachedProperty
             scaleTransform.ScaleX = (double)e.NewValue / StandardSize;
             scaleTransform.ScaleY = (double)e.NewValue / StandardSize;
             border.RenderTransform = scaleTransform;
+
         }
     }
 }

@@ -16,22 +16,24 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextPlaceHolder" Value="{x:Null}"/>
         <Setter Property="ToolTip" Value="{x:Null}"/>
+        <Setter Property="Focusable" Value="True"/>
         <Setter Property="Cursor" Value="IBeam" />
         <Setter Property="InputMethod.IsInputMethodEnabled" Value="False"/>
         <Setter Property="Padding" Value="8,0,0,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type customCtl:CustomTextControl}">
-                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" ToolTip="{TemplateBinding ToolTip}" 
+                    <Border x:Name="border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" 
                             BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid>
+                        <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <TextBlock x:Name="PART_PlaceHolder" Text="{TemplateBinding TextPlaceHolder}" Foreground="{TemplateBinding attachted:PlaceHolderAdditional.PlaceHolderForeground}" Opacity="0"
                                        TextAlignment="Left" FontSize="{TemplateBinding FontSize}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}"/>
-                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                          VerticalAlignment="{TemplateBinding VerticalAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" ScrollViewer.CanContentScroll="True"
                                           IsHitTestVisible="{TemplateBinding IsHitTestVisible}" Foreground="{TemplateBinding Foreground}"/>
                         </Grid>
                     </Border>
+                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="Text" Value="">
                             <Setter Property="Opacity" Value="0.8" TargetName="PART_PlaceHolder"></Setter>

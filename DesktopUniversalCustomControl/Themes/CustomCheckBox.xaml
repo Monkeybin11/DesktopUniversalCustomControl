@@ -9,21 +9,24 @@
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}" />
         <Setter Property="FillBrush" Value="{DynamicResource PrimaryBackgroundColor}" />
         <Setter Property="FillType" Value="Check" />
+        <Setter Property="Padding" Value="5,0,0,0" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type customCtl:CustomCheckBox}">
                     <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Cursor="{TemplateBinding Cursor}">
                         <StackPanel Orientation="Horizontal">
-                            <Border x:Name="PART_Border" Width="20" Height="20" RenderTransformOrigin="0.5,0.5"
+                            <Border x:Name="PART_Border" Width="20" Height="20" RenderTransformOrigin="0.5,0.5" 
+                                    CornerRadius="{TemplateBinding attached:CornerRadiusAdditional.CornerRadius}"
                                     Background="{TemplateBinding Background}" HorizontalAlignment="Center" VerticalAlignment="Center"
                                     BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
-                                <Grid >
+                                <Grid>
                                     <Rectangle x:Name="rec" Fill="{TemplateBinding FillBrush}" Opacity="0"/>
-                                    <Path x:Name="check" Data="M 3,8 L 8,12 L 15,3" Stroke="{TemplateBinding FillBrush}" StrokeThickness="2" Opacity="0"/>
+                                    <Path x:Name="check" Data="M 3,9 L 7,13 L 15,3"
+                                          Stroke="{TemplateBinding FillBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Opacity="0"/>
                                 </Grid>
                             </Border>
-                            <ContentPresenter Content="{TemplateBinding Content}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                            <ContentPresenter Content="{TemplateBinding Content}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>

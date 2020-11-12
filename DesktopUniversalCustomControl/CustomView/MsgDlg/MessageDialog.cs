@@ -1,8 +1,12 @@
 ﻿using DesktopUniversalCustomControl.CustomComponent;
 using DesktopUniversalCustomControl.NotifycationObject;
+using System;
 using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -69,8 +73,8 @@ namespace DesktopUniversalCustomControl.CustomView.MsgDlg
         public static MessageBoxResult Show(string indicateText, MessageButtonCount messageButtonCount = MessageButtonCount.Single)
         {
             MsgViewModel.msg_IndicateText = indicateText;
-
-            return Application.Current.Dispatcher.Invoke(() => OpenMsgWindow(messageButtonCount));
+           
+            return OpenMsgWindow(messageButtonCount);
         }
 
         /// <summary>
@@ -83,7 +87,7 @@ namespace DesktopUniversalCustomControl.CustomView.MsgDlg
             MsgViewModel.msg_IndicateText = indicateText;
             MsgViewModel.msg_Icon = msgIcon;
 
-            return Application.Current.Dispatcher.Invoke(() => OpenMsgWindow(messageButtonCount));
+            return OpenMsgWindow(messageButtonCount);
         }
 
         /// <summary>
@@ -92,10 +96,14 @@ namespace DesktopUniversalCustomControl.CustomView.MsgDlg
         /// <returns></returns>
         private static MessageBoxResult OpenMsgWindow(MessageButtonCount messageButtonCount)
         {
-            MessageWindow msgWin = new MessageWindow();
-            StateChanged(msgWin, messageButtonCount);
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(()=> 
+            {
+                MessageWindow msgWin = new MessageWindow();
+                StateChanged(msgWin, messageButtonCount);
+                msgWin.ShowDialog();
+            }));
+            // Dispatcher.Run(); //更新窗口的状态
 
-            msgWin.ShowDialog();
             return MsgViewModel.msg_Result;
         }
 

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+    <TargetFrameworks>netcoreapp31;net461</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <Version>1.0.3.8</Version>
     <Authors>Chance__写代码的厨子</Authors>

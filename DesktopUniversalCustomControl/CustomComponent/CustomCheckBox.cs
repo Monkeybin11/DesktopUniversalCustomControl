@@ -19,14 +19,20 @@ namespace DesktopUniversalCustomControl.CustomComponent
     [TemplatePart(Name = "PART_Border", Type = typeof(Border))]
     public class CustomCheckBox : CheckBox
     {
+        private static Border border;
+        private const double StandardSize = 20D;
+
         static CustomCheckBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomCheckBox), new FrameworkPropertyMetadata(typeof(CustomCheckBox)));
         }
 
-        public CustomCheckBox()
+
+        public override void OnApplyTemplate()
         {
-            var border = this.GetTemplateChild("PART_Border") as Border;
+            border = GetTemplateChild("PART_Border") as Border;
+            border.RenderTransform = ScaleTransformResult(CheckBoxSize);
+            base.OnApplyTemplate();
         }
 
         public Brush IsMouseOverBackground
@@ -52,8 +58,37 @@ namespace DesktopUniversalCustomControl.CustomComponent
             get { return (FillType)GetValue(FillTypeProperty); }
             set {  SetValue(FillTypeProperty, value); }
         }
+        /// <summary>
+        /// 填充类型(■，✔)
+        /// </summary>
         public static readonly DependencyProperty FillTypeProperty =
             DependencyProperty.Register("FillType", typeof(FillType), typeof(CustomCheckBox), new PropertyMetadata(default(FillType)));
+
+
+        public double CheckBoxSize
+        {
+            get { return (double)GetValue(CheckBoxSizeProperty); }
+            set { SetValue(CheckBoxSizeProperty, value); }
+        }
+        /// <summary>
+        ///  CheckBox的呈现大小
+        /// <see cref="CheckBoxSize"/>
+        /// </summary>
+        public static readonly DependencyProperty CheckBoxSizeProperty =
+            DependencyProperty.Register("CheckBoxSize", typeof(double), typeof(CustomCheckBox), new FrameworkPropertyMetadata(20D, new PropertyChangedCallback(CheckBoxSizeChanged)));
+        private static void CheckBoxSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (border == null) return;
+            border.RenderTransform = ScaleTransformResult((double)e.NewValue);
+        }
+
+        private static ScaleTransform ScaleTransformResult(double value)
+        {
+            ScaleTransform scaleTransform = new ScaleTransform();
+            scaleTransform.ScaleX = value / StandardSize;
+            scaleTransform.ScaleY = value / StandardSize;
+            return scaleTransform;
+        }
     }
 
 

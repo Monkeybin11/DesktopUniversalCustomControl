@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+    <TargetFrameworks>netcoreapp31;net461</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -11,13 +11,14 @@
     <PackageProjectUrl>https://gitee.com/ChanceZXY/DesktopCustomControl</PackageProjectUrl>
     <RepositoryUrl>https://github.com/chancezheng/DesktopCustomControl</RepositoryUrl>
     <NeutralLanguage>zh-CN</NeutralLanguage>
-    <AssemblyVersion>1.0.3.82</AssemblyVersion>
-    <FileVersion>1.0.3.82</FileVersion>
-    <PackageReleaseNotes>V1.0.2是基于.NetFramework4.6.1，该版本是兼容Framework4.6.1和.Net Core3.1的</PackageReleaseNotes>
+    <AssemblyVersion>1.0.3.84</AssemblyVersion>
+    <FileVersion>1.0.3.84</FileVersion>
+    <PackageReleaseNotes>V1.0.2是基于.NetFramework4.6.1，该版本是兼容Framework4.6.1和.Net Core3.1的，目前正在开发完善中......</PackageReleaseNotes>
     <PackageTags>WPF/Winfrom/XAML</PackageTags>
-    <Version>1.0.3.82</Version>
+    <Version>1.0.3.84</Version>
     <Copyright>Copyright © 2020 Chance 个人所有</Copyright>
     <PackageIcon>C.png</PackageIcon>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>
